@@ -1,0 +1,1 @@
+g++ -o "/home/xwk/projects/High_concurrency_server/bin/ARM64/Debug/High_concurrency_server.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /home/xwk/projects/High_concurrency_server/obj/ARM64/Debug/main.o /home/xwk/projects/High_concurrency_server/obj/ARM64/Debug/server.o

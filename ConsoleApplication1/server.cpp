@@ -2,6 +2,7 @@
 #include "arpa/inet.h"
 #include "cstdio"
 #include "sys/epoll.h"
+#include "fcntl.h"
 
 
 int initListenFd(unsigned short port)
@@ -122,6 +123,8 @@ int initListenFd(unsigned short port)
 				int fd = evs[i].data.fd;
 				if (fd == lfd) {
 					//建立新链接，经过epoll_wait检测到lfd后accept函数不阻塞
+					//传入监听描述符，和需要挂上的树描述符
+					acceptClient(lfd, epfd);
 
 				}
 				else {
@@ -131,6 +134,52 @@ int initListenFd(unsigned short port)
 					//当收到信息时，读事件触发
 				}
 			}
+		}
+
+		return 0;
+	}
+
+	//连接客户端
+	//监听文件描述符，epoll树根节点
+	int acceptClient(int lfd, int epfd)
+	{
+		//1.建立连接
+		//监听文件描述符，new一个结构体用于保存客户端的ip和端口信息 不需要则为NULL，结构体的大小
+		int cfd = accept(lfd, NULL, NULL);
+		if (cfd == -1) {
+			perror("accept");
+			return -1;
+		}
+		
+		
+		//2.设置为边沿非阻塞模式，提高效率。
+		//得到连接文件描述符的属性
+		//连接描述符，得到属性宏
+		int flag = fcntl(cfd, F_GETFL);
+		//追加非阻塞属性
+		flag |= O_NONBLOCK;
+		//将属性赋给连接文件描述符 fcntl是个变参函数
+		//需要操作的文件描述符，操作类型，属性
+		fcntl(cfd, F_SETFL,flag);
+
+
+		//3.将cfd连接文件描述符挂到epoll树上（和lfd上树一样）
+		//创建文件描述符的事件结构体
+		struct epoll_event ev;
+		//data是一个联合体，共用内存
+		//fd记录事件的文件描述符
+		ev.data.fd = cfd;
+		//events记录事件，对服务器来说是读事件，读取客户端发来的消息
+		//设置为边沿模式
+		ev.events = EPOLLIN | EPOLLET;
+
+		//通过epoll_create得到的树根节点，需要上树epoll_ctl_add,需要操作的文件描述符,文件描述符的事件结构体
+		int ret = epoll_ctl(epfd, EPOLL_CTL_ADD, cfd, &ev);
+
+		//判断是否上树成功
+		if (ret == -1) {
+			perror("accept");
+			return -1;
 		}
 
 		return 0;

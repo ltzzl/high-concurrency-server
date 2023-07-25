@@ -1,0 +1,17 @@
+﻿  正在验证源
+  正在将源远程复制到“192.168.227.128”
+  正在验证体系结构
+  正在验证体系结构
+D:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Application Type\Linux\1.0\Linux.targets(204,5): warning : 当前项目体系结构“ARM64”不兼容远程系统体系结构“x64”(“x86_64”)。请在 Configuration Manager 中将项目体系结构切换为“x64”。如果正在交叉编译，可以忽略此警告。
+  正在启动远程生成
+  正在编译源:
+  main.cpp
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(6,9): warning : unused variable ‘lfd’ [-Wunused-variable]
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(6,9): warning :     6 |     int lfd = initListenFd(10000);
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(6,9): warning :       |         ^~~
+  server.cpp
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\server.cpp(69,1): warning : control reaches end of non-void function [-Wreturn-type]
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\server.cpp(69,1): warning :    69 | }
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\server.cpp(69,1): warning :       | ^
+  正在链接对象
+  ConsoleApplication1.vcxproj -> E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\bin\ARM64\Debug\High_concurrency_server.out
