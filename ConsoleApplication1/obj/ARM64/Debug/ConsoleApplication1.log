@@ -6,12 +6,14 @@ D:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v17
   正在启动远程生成
   正在编译源:
   main.cpp
-E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(6,9): warning : unused variable ‘lfd’ [-Wunused-variable]
-E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(6,9): warning :     6 |     int lfd = initListenFd(10000);
-E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(6,9): warning :       |         ^~~
-  server.cpp
-E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\server.cpp(69,1): warning : control reaches end of non-void function [-Wreturn-type]
-E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\server.cpp(69,1): warning :    69 | }
-E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\server.cpp(69,1): warning :       | ^
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(15,31): warning : conversion from ‘int’ to ‘short unsigned int’ may change value [-Wconversion]
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(15,31): warning :    15 |     unsigned short port = atoi(argv[1]);
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(15,31): warning :       |                           ~~~~^~~~~~~~~
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(15,20): warning : unused variable ‘port’ [-Wunused-variable]
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(15,20): warning :    15 |     unsigned short port = atoi(argv[1]);
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(15,20): warning :       |                    ^~~~
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(22,9): warning : unused variable ‘lfd’ [-Wunused-variable]
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(22,9): warning :    22 |     int lfd = initListenFd(10000);
+E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\main.cpp(22,9): warning :       |         ^~~
   正在链接对象
   ConsoleApplication1.vcxproj -> E:\High_concurrency_servers\first commit\ConsoleApplication1\ConsoleApplication1\bin\ARM64\Debug\High_concurrency_server.out
